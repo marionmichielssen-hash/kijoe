@@ -405,6 +405,10 @@ fieldset label {
     gap: 10px;
   }
 
+  .panel-collapsed .app {
+    padding-top: 54px;
+  }
+
   .panelToggle {
     display: grid;
     place-items: center;

@@ -1,4 +1,4 @@
-const CACHE_NAME = "kat-muis-zak-v5";
+const CACHE_NAME = "kat-muis-zak-v6";
 const APP_FILES = [
   "./",
   "./index.html",
