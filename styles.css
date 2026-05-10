@@ -34,7 +34,7 @@ select {
 .app {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto auto auto 1fr;
+  grid-template-rows: auto auto 1fr;
   gap: 14px;
   padding: 16px;
 }
@@ -408,23 +408,28 @@ fieldset label {
   .panelToggle {
     display: grid;
     place-items: center;
-    position: sticky;
-    top: 4px;
+    position: fixed;
+    top: 8px;
+    right: 10px;
     z-index: 12;
-    width: 42px;
-    height: 34px;
+    width: auto;
+    min-width: 86px;
+    height: 40px;
     justify-self: end;
     border-radius: 7px;
     background: #211a16;
     color: var(--paper-light);
     border-color: rgba(255,255,255,0.24);
-    padding: 0;
+    padding: 0 12px;
+    font-weight: 800;
+    box-shadow: 0 5px 16px rgba(24, 13, 5, 0.32);
   }
 
   .topbar {
     align-items: stretch;
     grid-template-columns: 1fr;
     padding: 12px;
+    padding-right: 108px;
     max-height: 520px;
     overflow: hidden;
     transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.25s ease, border-width 0.25s ease;

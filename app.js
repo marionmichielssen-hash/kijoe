@@ -328,7 +328,7 @@ function render() {
   document.body.classList.toggle("is-move-mode", state.moveMode);
   document.body.classList.toggle("panel-collapsed", state.panelCollapsed);
   els.panelToggle.setAttribute("aria-expanded", String(!state.panelCollapsed));
-  els.panelToggle.textContent = state.panelCollapsed ? "▾" : "▴";
+  els.panelToggle.textContent = state.panelCollapsed ? "Menu ▼" : "Menu ▲";
   const n = state.n;
   const boardTile = Math.max(44, Math.min(108, Math.floor((Math.min(window.innerWidth - 32, window.innerHeight - 230)) / n) - 7));
   const trayTile = Math.max(72, Math.min(96, Math.floor(window.innerWidth / 7)));
@@ -717,7 +717,7 @@ function applyHelp() {
 els.newGame.addEventListener("click", startGame);
 els.panelToggle.addEventListener("click", () => {
   state.panelCollapsed = !state.panelCollapsed;
-  state.autoCollapsed = state.autoCollapsed || state.panelCollapsed;
+  state.autoCollapsed = true;
   render();
 });
 els.helpCount.addEventListener("change", applyHelp);
