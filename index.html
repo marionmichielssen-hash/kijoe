@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#8a5426" />
+    <meta name="description" content="Een digitale Kat Muis Zak legpuzzel met roteerbare kaartjes." />
+    <title>Kat Muis Zak</title>
+    <link rel="manifest" href="manifest.webmanifest?v=4" />
+    <link rel="icon" href="app-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=4" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div>
+          <h1>Kat Muis Zak</h1>
+          <p id="status">Kies een formaat en leg alle kaartjes passend aan elkaar.</p>
+        </div>
+        <div class="controls">
+          <label>
+            Level
+            <select id="levelSelect" aria-label="Level">
+              <optgroup label="Zonder randstukken">
+                <option value="noedge-1-upright">1 figuur, rechtop</option>
+                <option value="noedge-1-all">1 figuur, alle richtingen</option>
+                <option value="noedge-2-upright">2 figuren, rechtop</option>
+                <option value="noedge-2-all">2 figuren, alle richtingen</option>
+                <option value="noedge-3-upright">3 figuren, rechtop</option>
+                <option value="noedge-3-all">3 figuren, alle richtingen</option>
+              </optgroup>
+              <optgroup label="Met randstukken">
+                <option value="edge-1-upright">1 figuur, rechtop</option>
+                <option value="edge-1-all">1 figuur, alle richtingen</option>
+                <option value="edge-2-upright">2 figuren, rechtop</option>
+                <option value="edge-2-all">2 figuren, alle richtingen</option>
+                <option value="edge-3-upright">3 figuren, rechtop</option>
+                <option value="edge-3-all" selected>3 figuren, alle richtingen</option>
+              </optgroup>
+              <option value="free">Vrij spel</option>
+            </select>
+          </label>
+          <label>
+            Grid
+            <select id="sizeSelect" aria-label="Gridformaat">
+              <option value="3">3 x 3</option>
+              <option value="4">4 x 4</option>
+              <option value="5" selected>5 x 5</option>
+              <option value="6">6 x 6</option>
+              <option value="7">7 x 7</option>
+            </select>
+          </label>
+          <button id="newGame" type="button">Nieuw spel</button>
+          <label class="helpControl">
+            Hulpstukken
+            <select id="helpCount" aria-label="Aantal helpstukken">
+              <option value="0" selected>Geen</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+          <button id="moveMode" type="button" aria-pressed="false" title="Rijen en kolommen verplaatsen">Verplaats rij of kolom</button>
+          <button id="peek" type="button" aria-pressed="false">Oplossing</button>
+        </div>
+        <div id="freeControls" class="freeControls" hidden>
+          <fieldset>
+            <legend>Figuren</legend>
+            <label><input type="checkbox" name="kind" value="cat" checked /> Kat</label>
+            <label><input type="checkbox" name="kind" value="mouse" checked /> Muis</label>
+            <label><input type="checkbox" name="kind" value="bag" checked /> Zak</label>
+          </fieldset>
+          <fieldset>
+            <legend>Regels</legend>
+            <label>
+              Richting
+              <select id="orientationSelect" aria-label="Richting">
+                <option value="upright">Alleen rechtop</option>
+                <option value="all" selected>Alle richtingen</option>
+              </select>
+            </label>
+            <label>
+              Randen
+              <select id="edgeSelect" aria-label="Randen">
+                <option value="empty">Zonder prentjes</option>
+                <option value="filled" selected>Met prentjes</option>
+              </select>
+            </label>
+          </fieldset>
+        </div>
+      </header>
+
+      <section class="trayWrap" aria-label="Beschikbare kaartjes">
+        <div id="tray" class="tray"></div>
+      </section>
+
+      <section class="boardWrap">
+        <div class="boardShell">
+          <div class="cornerPad" aria-hidden="true"></div>
+          <div id="colHandles" class="colHandles" aria-label="Kolommen verplaatsen"></div>
+          <div id="rowHandles" class="rowHandles" aria-label="Rijen verplaatsen"></div>
+          <div id="board" class="board" aria-label="Puzzelgrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="celebration" class="celebration" aria-hidden="true"></div>
+    <div id="ghost" class="ghost" hidden></div>
+    <script src="app.js?v=4"></script>
+    <script>
+      if ("serviceWorker" in navigator && location.protocol !== "file:") {
+        navigator.serviceWorker.register("sw.js");
+      }
+    </script>
+  </body>
+</html>
