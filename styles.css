@@ -34,9 +34,13 @@ select {
 .app {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto 1fr;
   gap: 14px;
   padding: 16px;
+}
+
+.panelToggle {
+  display: none;
 }
 
 .topbar {
@@ -401,10 +405,38 @@ fieldset label {
     gap: 10px;
   }
 
+  .panelToggle {
+    display: grid;
+    place-items: center;
+    position: sticky;
+    top: 4px;
+    z-index: 12;
+    width: 42px;
+    height: 34px;
+    justify-self: end;
+    border-radius: 7px;
+    background: #211a16;
+    color: var(--paper-light);
+    border-color: rgba(255,255,255,0.24);
+    padding: 0;
+  }
+
   .topbar {
     align-items: stretch;
     grid-template-columns: 1fr;
     padding: 12px;
+    max-height: 520px;
+    overflow: hidden;
+    transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.25s ease, border-width 0.25s ease;
+  }
+
+  .panel-collapsed .topbar {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0;
+    pointer-events: none;
   }
 
   .controls {
