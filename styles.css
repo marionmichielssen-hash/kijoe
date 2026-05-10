@@ -406,7 +406,11 @@ fieldset label {
   }
 
   .panel-collapsed .app {
-    padding-top: 54px;
+    padding-top: 10px;
+  }
+
+  .panel-collapsed .trayWrap {
+    margin-top: 48px;
   }
 
   .panelToggle {
